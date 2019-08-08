@@ -43,7 +43,7 @@ public class AlbumRepository {
                     Log.d(TAG, "Success");
                     listData = response.body();
                     if (listData != null) {
-                        listMutableLiveData.setValue(orderData(listData));
+                        listMutableLiveData.setValue(createTransformedData(listData));
                     }
                 }
 
@@ -59,7 +59,8 @@ public class AlbumRepository {
     }
 
 
-    private ArrayList<AlbumModel> orderData(ArrayList<AlbumModel> listDataFetched) {
+    //Creates grouperd data according to Album ID
+    private ArrayList<AlbumModel> createTransformedData(ArrayList<AlbumModel> listDataFetched) {
 
         //It is supposed that ID's are ordered
 
@@ -69,7 +70,7 @@ public class AlbumRepository {
         for (AlbumModel albumModel : listDataFetched) {
             if (previousAlbumId != albumModel.getAlbumId()) {
                 //Creating an ID type object in list for Grouping of data in view
-                //Creating a new Item and seetting its data
+                //Creating a new Item and setting its data
                 AlbumModel idAlbumModel = new AlbumModel();
                 idAlbumModel.setAlbumId(albumModel.getAlbumId());
                 idAlbumModel.setTitle(albumModel.getTitle());
