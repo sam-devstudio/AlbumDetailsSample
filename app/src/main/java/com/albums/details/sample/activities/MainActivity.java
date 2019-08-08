@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.albums.details.sample.R;
 import com.albums.details.sample.adapters.AlbumsRVAdapter;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable ArrayList<AlbumModel> albumModelList) {
                 albumsRVAdapter.setListData(albumModelList);
+                activityMainBinding.loadingBar.setVisibility(View.GONE);
             }
         });
     }

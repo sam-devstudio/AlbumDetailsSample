@@ -16,7 +16,7 @@ public class AlbumsViewModel extends AndroidViewModel {
 
     public AlbumsViewModel(@NonNull Application application) {
         super(application);
-        albumRepository = new AlbumRepository();
+        albumRepository = new AlbumRepository(getApplication().getApplicationContext());
     }
 
     public MutableLiveData<ArrayList<AlbumModel>> getAllAlbumsData(){
